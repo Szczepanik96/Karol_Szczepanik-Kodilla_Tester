@@ -26,6 +26,9 @@ public class SimpleArray {
         String food = foods[3];
         System.out.println(food);
 
+        int numberOfElements = foods.length;
+        System.out.println(numberOfElements + " is a number Of different foods");
+
 
     }
 }
