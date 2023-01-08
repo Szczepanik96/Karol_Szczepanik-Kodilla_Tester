@@ -1,6 +1,6 @@
 public class LeapYear {
     public static void main(String [] args) {
-    int year = 2013;
+    int year = 4;
     boolean leap = false;
     if (year % 4 == 0) {
         if (year % 100 == 0) {
