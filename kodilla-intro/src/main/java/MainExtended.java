@@ -8,6 +8,7 @@ public class MainExtended {
         int ocCost = 2500;
         boolean isItDamaged = false;
 
+
         System.out.println(myCar);
         System.out.println(horsePower);
         System.out.println(timeFromZeroToHundred);

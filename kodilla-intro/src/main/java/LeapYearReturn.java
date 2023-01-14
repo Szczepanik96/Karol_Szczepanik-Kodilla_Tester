@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
 public class LeapYearReturn {
+    public static void main(String[] args) {
+
+        leapYear();
+    }
+
     private static Boolean leapYear() {
-        int year = 800;
-        boolean leap = false;
+        int year = 54;
+        boolean leap;
 
         if (year % 4 == 0) {
             if (year % 100 == 0) {
@@ -17,24 +22,7 @@ public class LeapYearReturn {
         else
             System.out.println(year + "This is not leap year.");
 
-        System.out.println(leapYear());
-
         return leap;
-
-    }
-    public static void main(String[] args) {
-
-        System.out.println(leapYear());
     }
 
 }
-
-
-
-
-
-
-
-
-
-
