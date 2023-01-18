@@ -15,8 +15,6 @@ public class Book {
        Book book4 = Book.of("Great Circle", "Maggie Shipstead");
        Book book5 = Book.of("Tom Clancy's Oath of Office", "Marc Cameron");
 
-       System.out.println(book5);
-
        return book4;
     }
 }
