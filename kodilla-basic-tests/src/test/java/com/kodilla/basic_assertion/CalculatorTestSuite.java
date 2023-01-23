@@ -29,13 +29,13 @@ public class CalculatorTestSuite {
         Calculator calculator = new Calculator();
         double a = -2.5;
         double b = 0;
-        double c = 5;
+        double c = 5.15;
 
         double sqrResult = calculator.sqr(a);
         double sqrResult1 = calculator.sqr(b);
         double sqrResult2 = calculator.sqr(c);
-        assertEquals(6.25, sqrResult);
-        assertEquals(0,sqrResult1);
-        assertEquals(25,sqrResult2);
+        assertEquals(6.25,sqrResult,0.01);
+        assertEquals(0,sqrResult1,0.01);
+        assertEquals(26.52,sqrResult2,0.01);
     }
 }
