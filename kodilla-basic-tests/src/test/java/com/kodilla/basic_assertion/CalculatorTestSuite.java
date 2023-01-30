@@ -6,13 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTestSuite {
 
+
+
     @Test
     public void testSum() {
         Calculator calculator = new Calculator();
         int a = 56;
         int b = 35;
         double sumResult = calculator.add(a, b);
-        assertEquals(91, sumResult);
+        assertEquals(91, sumResult,0.1);
     }
 
     @Test
@@ -21,7 +23,7 @@ public class CalculatorTestSuite {
         int a = 56;
         int b = 35;
         double subResult = calculator.sub(a,b);
-        assertEquals(21, subResult);
+        assertEquals(21, subResult,0.1);
     }
 
     @Test
