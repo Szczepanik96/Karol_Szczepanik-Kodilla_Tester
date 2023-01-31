@@ -7,7 +7,7 @@ public class CarRace {
         Car mustang = new Mustang(55);
         doRace(mustang);
 
-        Car porshe = new Porshe(80);
+        Car porshe = new Porsche(80);
         doRace(porshe);
 
         Car deawoo = new Daewoo(25);

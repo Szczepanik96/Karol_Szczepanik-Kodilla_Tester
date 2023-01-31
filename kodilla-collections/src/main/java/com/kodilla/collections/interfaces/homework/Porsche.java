@@ -1,10 +1,10 @@
 package com.kodilla.collections.interfaces.homework;
 
-public class Porshe implements Car{
+public class Porsche implements Car{
 
     private double speed;
 
-    public Porshe(double speed){
+    public Porsche(double speed){
         this.speed = speed;
     }
 
