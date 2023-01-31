@@ -16,12 +16,10 @@ public class Daewoo implements Car{
     @Override
     public double increaseSpeed() {
         return speed * 1.1;
-
     }
 
     @Override
     public double decreaseSpeed() {
         return speed / 1.5;
-
     }
 }
