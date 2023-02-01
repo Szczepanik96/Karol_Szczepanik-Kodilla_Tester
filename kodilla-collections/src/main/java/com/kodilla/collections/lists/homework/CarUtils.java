@@ -12,6 +12,7 @@ public class CarUtils {
         System.out.println("Actual car speed is: " + car.getSpeed());
     }
 
+
     private static String getCarName(Car car) {
         if (car instanceof Daewoo)
             return "Daewoo";

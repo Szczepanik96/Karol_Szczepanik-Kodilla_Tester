@@ -1,7 +1,7 @@
 package com.kodilla.collections.arrays;
 
 import com.kodilla.collections.interfaces.homework.Car;
-import com.kodilla.collections.lists.homework.CarListApplication;
+import com.kodilla.collections.lists.homework.CarApplication;
 
 import java.util.Random;
 
@@ -14,7 +14,7 @@ public class CarRandomArray {
 
         Car[] carRng = new Car[random.nextInt(15) + 1];
         for (int i = 0; i < carRng.length; i++) {
-            carRng[i] = CarListApplication.createCar();
+            carRng[i] = CarApplication.createCar();
         }
 
         for (int j = 0; j < carRng.length; j++) {
