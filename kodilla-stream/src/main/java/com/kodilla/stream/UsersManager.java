@@ -20,24 +20,21 @@ public class UsersManager {
     }
 
     public static List<Integer> filterUsersOlderThan(List<User> newUsers) {
-        List<Integer> oldUsers = newUsers
+        return newUsers
                 .stream()
                 .filter(i -> getUserAge(i) > 40)
                 .map(UsersManager:: getUserAge)
                 .collect(Collectors.toList());
-        return oldUsers;
     }
     public static Integer getUserAge(User userAge){
         return userAge.getAge();
     }
     public static List<Integer> filterUsersWithNameLength(List<User> newUsers){
-        List<Integer> nameLength = newUsers
+        return newUsers
                 .stream()
                 .filter(i -> getUserNameLength(i) > 7)
                 .map(UsersManager::getUserNameLength)
                 .collect(Collectors.toList());
-        return nameLength;
-
     }
     public static Integer getUserNameLength(User user){
         return user.getUsernames().length();
