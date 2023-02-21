@@ -49,6 +49,6 @@ class FlightFinderTestSuite {
         expectedList.add(new Flight("England", "Ukraine"));
         expectedList.add(new Flight("Poland", "Ukraine"));
         expectedList.add(new Flight("USA", "Ukraine"));
-        assertEquals(3, result.size());
+        assertEquals(4, result.size());
     }
 }
