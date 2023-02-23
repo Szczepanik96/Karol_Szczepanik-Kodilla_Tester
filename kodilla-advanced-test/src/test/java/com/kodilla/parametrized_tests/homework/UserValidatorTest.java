@@ -1,5 +1,6 @@
 package com.kodilla.parametrized_tests.homework;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -9,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UserValidatorTest {
-    private UserValidator validator = new UserValidator();
+    private UserValidator validator;
 
-    //    "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
-    //    pewnie można było zrobić więcej elementów w jednym teście ale rozgraniczyłem je na poniższe przykłady
+    @BeforeEach
+    public void setUp(){
+        validator = new UserValidator();
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"_azAZ09-._azAZ09-@azAZ09-.azAZ09-.azAZ", "BC-_45.DeF-_g56@Ij-7.K-l8.Mnasda"})
@@ -55,25 +58,28 @@ class UserValidatorTest {
         boolean result = validator.validateEmail(mail);
         assertFalse(result);
     }
-//    "^[a-zA-Z0-9._-]{3,}$"
+
     @ParameterizedTest
     @ValueSource(strings = {"Az123.-_","12344","AAAAAA","aaaaaa","-------","______"} )
     public void shouldReturnTrueIfUsernameIsCorrect(String username){
         boolean result = validator.validateUsername(username);
         assertTrue(result);
     }
+
     @ParameterizedTest
     @ValueSource(strings = {"AZ123._-!","AAAAA&"})
     public void shouldReturnFalseIfUsernameHaveNotAllowedElements(String username){
         boolean result = validator.validateUsername(username);
         assertFalse(result);
     }
+
     @ParameterizedTest
     @ValueSource(strings = {"AA","aa","Aa","11",".."})
     public void shouldReturnFalseIfUsernameIsTooShort(String username){
         boolean result = validator.validateUsername(username);
         assertFalse(result);
     }
+
     @ParameterizedTest
     @EmptySource
     public void shouldReturnFalseIfUsernameIsEmpty(String username){
