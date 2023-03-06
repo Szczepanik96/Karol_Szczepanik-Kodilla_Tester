@@ -7,4 +7,5 @@ include 'kodilla-collections-advanced'
 include 'kodilla-stream'
 include 'kodilla-advanced-test'
 include 'kodilla-advanced-test'
+include 'kodilla-spring-basic'
 
