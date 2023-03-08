@@ -17,16 +17,19 @@ public class CalculatorTestSuite {
         double addResult = bean.add(12.3,41.8);
         Assertions.assertNotNull(addResult);
     }
+
     @Test
     public void shouldReturnCorrectResultOfSubtract(){
         double subResult = bean.subtract(83.1,80.1);
         Assertions.assertNotNull(subResult);
     }
+
     @Test
     public void shouldReturnCorrectResultOfMultiply(){
         double multiplyResult = bean.multiply(12.5,29.5);
         Assertions.assertNotNull(multiplyResult);
     }
+
     @Test
     public void shouldReturnCorrectResultOfDivide(){
         double divideResult = bean.divide(80.5,11.2);
