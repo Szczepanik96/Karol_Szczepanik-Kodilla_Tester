@@ -5,7 +5,6 @@ import org.mockito.Mockito;
 
 public class WeatherHazardsSystemTestSuite {
 
-
     WeatherHazardSystemService weatherHazardSystemService = new WeatherHazardSystemService();
 
         User davie = Mockito.mock(User.class);
@@ -19,10 +18,9 @@ public class WeatherHazardsSystemTestSuite {
     @Test
     public void shouldAddPersonsToSpecificLocationAndSendThemAlerts() {
 
-
         weatherHazardSystemService.addLocation(oslo);
         weatherHazardSystemService.addUserToLocation(oslo,davie);
-        weatherHazardSystemService.sendAlert(oslo,alert);
+        weatherHazardSystemService.sendAlertToAll(alert);
 
         Mockito.verify(davie, Mockito.times(1)).receive(alert);
     }
@@ -33,31 +31,30 @@ public class WeatherHazardsSystemTestSuite {
         weatherHazardSystemService.addLocation(canada);
         weatherHazardSystemService.addUserToLocation(canada,jenny);
         weatherHazardSystemService.removeUserFromLocation(canada,jenny);
-        weatherHazardSystemService.sendAlert(canada,alert);
+        weatherHazardSystemService.sendAlertToAll(alert);
 
         Mockito.verify(jenny,Mockito.never()).receive(alert);
     }
+
     @Test
     public void shouldRemovePersonFromAllLocationsAndFromSystem() {
 
         weatherHazardSystemService.addLocation(canada);
         weatherHazardSystemService.addLocation(ohio);
         weatherHazardSystemService.addLocation(oslo);
+        weatherHazardSystemService.addUserToLocation(canada,jenny);
         weatherHazardSystemService.addUserToLocation(canada,davie);
         weatherHazardSystemService.addUserToLocation(ohio,davie);
         weatherHazardSystemService.addUserToLocation(oslo,davie);
         weatherHazardSystemService.removeUserFromAllLocations(davie);
-        weatherHazardSystemService.sendAlert(canada,alert);
-        weatherHazardSystemService.sendAlert(ohio,alert);
-        weatherHazardSystemService.sendAlert(oslo,alert);
+        weatherHazardSystemService.sendAlertToAll(alert);
 
         Mockito.verify(davie,Mockito.never()).receive(alert);
-
-
-
     }
+
     @Test
     public void alertShouldBeDeliveredOnlyToSpecificGroupInLocation() {
+
         weatherHazardSystemService.addLocation(canada);
         weatherHazardSystemService.addLocation(ohio);
         weatherHazardSystemService.addLocation(oslo);
@@ -68,16 +65,41 @@ public class WeatherHazardsSystemTestSuite {
         weatherHazardSystemService.addUserToLocation(oslo,john);
         weatherHazardSystemService.addUserToLocation(ohio,davie);
         weatherHazardSystemService.addUserToLocation(ohio,jenny);
-        weatherHazardSystemService.sendAlert(canada,alert);
+        weatherHazardSystemService.sendAlertToUsersInLocation(oslo,alert);
 
-        Mockito.verify(canada,Mockito.times(9));
+        Mockito.verify(john,Mockito.times(1)).receive(alert);
+        Mockito.verify(davie,Mockito.never()).receive(alert);
     }
 
+    @Test
     public void alertShouldBeDeliveredToAllUsersInSystem() {
 
+        weatherHazardSystemService.addLocation(canada);
+        weatherHazardSystemService.addLocation(oslo);
+        weatherHazardSystemService.addLocation(ohio);
+        weatherHazardSystemService.addUserToLocation(canada,jenny);
+        weatherHazardSystemService.addUserToLocation(oslo,davie);
+        weatherHazardSystemService.addUserToLocation(ohio,john);
+        weatherHazardSystemService.addUserToLocation(ohio,jenny);
+        weatherHazardSystemService.sendAlertToAll(alert);
+
+        Mockito.verify(jenny,Mockito.times(2)).receive(alert);
+        Mockito.verify(john,Mockito.times(1)).receive(alert);
+        Mockito.verify(davie,Mockito.times(1)).receive(alert);
     }
 
+    @Test
     public void shouldRemoveLocationFromSystem() {
 
+        weatherHazardSystemService.addLocation(canada);
+        weatherHazardSystemService.addLocation(ohio);
+        weatherHazardSystemService.addLocation(oslo);
+        weatherHazardSystemService.addUserToLocation(canada,davie);
+        weatherHazardSystemService.addUserToLocation(ohio,davie);
+        weatherHazardSystemService.addUserToLocation(oslo,davie);
+        weatherHazardSystemService.removeLocation(canada);
+        weatherHazardSystemService.sendAlertToAll(alert);
+
+        Mockito.verify(davie,Mockito.times(2)).receive(alert);
     }
 }
