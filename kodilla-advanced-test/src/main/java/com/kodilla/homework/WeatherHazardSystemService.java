@@ -5,29 +5,32 @@ import java.util.*;
 public class WeatherHazardSystemService {
 
 
-    public HashMap<Location,Set<User>> usersInLocation = new HashMap<>();
+    public HashMap<Location,Set<User>> usersLocationsMap = new HashMap<>();
 
-    public void sendAlert(Location location,Alert alert){
-       usersInLocation.forEach((locations,users) -> users.forEach(user -> user.receive(alert)));
+    public void sendAlertToAll(Alert alert){
+       usersLocationsMap.forEach((locations, users) -> users.forEach(user -> user.receive(alert)));
+    }
+    public void sendAlertToUsersInLocation(Location location,Alert alert){
+        usersLocationsMap.get(location).forEach(user -> user.receive(alert));
     }
 
     public void addLocation(Location location){
-        usersInLocation.put(location,new HashSet<>());
+        usersLocationsMap.put(location,new HashSet<>());
     }
 
     public void removeLocation(Location location){
-        usersInLocation.remove(location);
+        usersLocationsMap.remove(location);
     }
 
     public void addUserToLocation(Location location,User user){
-        usersInLocation.get(location).add(user);
+        usersLocationsMap.get(location).add(user);
     }
 
     public void removeUserFromLocation(Location location,User user){
-        usersInLocation.get(location).remove(user);
+        usersLocationsMap.get(location).remove(user);
     }
 
     public void removeUserFromAllLocations(User user){
-        usersInLocation.forEach(((location, users) -> users.remove(user)));
+        usersLocationsMap.forEach(((location, users) -> users.remove(user)));
     }
 }
