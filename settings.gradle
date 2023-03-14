@@ -8,4 +8,5 @@ include 'kodilla-stream'
 include 'kodilla-advanced-test'
 include 'kodilla-advanced-test'
 include 'kodilla-spring-basic'
+include 'kodilla-rest-api'
 
