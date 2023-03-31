@@ -9,4 +9,7 @@ include 'kodilla-advanced-test'
 include 'kodilla-advanced-test'
 include 'kodilla-spring-basic'
 include 'kodilla-rest-api'
+include 'kodilla-intro:kodilla-selenium'
+findProject(':kodilla-intro:kodilla-selenium')?.name = 'kodilla-selenium'
+include 'kodilla-selenium'
 
