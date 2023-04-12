@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -35,7 +34,7 @@ public class KodillaStorePomTest {
             driver.navigate().to("https://kodilla.com/pl/test/store");
 
             WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
 
             WebElement advAccept =driver.findElement(By.cssSelector("div[tabindex=\"609\"]"));
             advAccept.click();
@@ -64,7 +63,7 @@ public class KodillaStorePomTest {
             driver.navigate().to("https://kodilla.com/pl/test/store");
 
             WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
 
             WebElement advAccept =driver.findElement(By.cssSelector("div[tabindex=\"609\"]"));
             advAccept.click();
@@ -81,7 +80,7 @@ public class KodillaStorePomTest {
             driver.navigate().to("https://kodilla.com/pl/test/store");
 
             wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div>[class=\"draggable-container ui-selectable edited poptin-visible\"]")));
 
             advAccept =driver.findElement(By.cssSelector("div[tabindex=\"609\"]"));
             advAccept.click();

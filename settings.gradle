@@ -13,4 +13,5 @@ include 'kodilla-intro:kodilla-selenium'
 findProject(':kodilla-intro:kodilla-selenium')?.name = 'kodilla-selenium'
 include 'kodilla-selenium'
 include 'kodilla-login-selenium'
+include 'kodilla-cucumber'
 
