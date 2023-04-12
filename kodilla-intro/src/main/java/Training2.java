@@ -22,15 +22,15 @@ class Training2 {
         System.out.println("Padło na: " + input);
 
 
-        switch (input) {
-            case 1 -> System.out.println(sum);
-            case 2 -> System.out.println(isEven);
-            case 3 -> System.out.println("Trója");
-            case 4 -> System.out.println("Czwórka");
-            case 5 -> System.out.println("Piątka");
-
-
-        }
+//        switch (input) {
+//            case 1 -> System.out.println(sum);
+//            case 2 -> System.out.println(isEven);
+//            case 3 -> System.out.println("Trója");
+//            case 4 -> System.out.println("Czwórka");
+//            case 5 -> System.out.println("Piątka");
+//
+//
+//        }
     }
 }
 
