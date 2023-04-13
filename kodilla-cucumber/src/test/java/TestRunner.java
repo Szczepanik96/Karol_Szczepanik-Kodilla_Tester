@@ -5,4 +5,5 @@ import org.junit.platform.suite.api.*;
 @SelectClasspathResource("/")
 
 public class TestRunner {
+
 }
