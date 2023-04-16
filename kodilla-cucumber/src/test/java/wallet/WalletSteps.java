@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 public class WalletSteps {
 
     private int amount;
-    private int answer;
+    private int balance;
     private int withdraw;
 
 
@@ -28,11 +28,11 @@ public class WalletSteps {
         wallet.deposit(amount);
         Assertions.assertEquals(500, wallet.getBalance());
     }
-    @Given("I have deposited 0 in my wallet")
-    public void i_have_deposited_0_in_my_wallet() {
-        this.amount = 0;
+    @Given("I have deposited 100 in my wallet")
+    public void i_have_deposited_100_in_my_wallet() {
+        this.amount = 100;
         wallet.deposit(amount);
-        Assertions.assertEquals(0, wallet.getBalance());
+        Assertions.assertEquals(100, wallet.getBalance());
     }
     @Given("I have deposited 1500 in my wallet")
     public void i_have_deposited_1500_in_my_wallet() {
@@ -54,9 +54,9 @@ public class WalletSteps {
         Cashier cashier = new Cashier(cashSlot);
         cashier.withdraw(wallet, this.withdraw);
     }
-    @When("I request 0")
+    @When("I request 50")
     public void i_request_0() {
-        this.withdraw = 0;
+        this.withdraw = 50;
         Cashier cashier = new Cashier(cashSlot);
         cashier.withdraw(wallet, this.withdraw);
     }
@@ -68,7 +68,23 @@ public class WalletSteps {
     }
 
     @Then("should be dispensed")
-    public void $_should_be_dispensed() {
+    public void should_be_dispensed() {
         Assertions.assertEquals(this.withdraw, cashSlot.getContents());
+    }
+    @Then("the balance of my wallet should be 100")
+    public void the_balance_of_my_wallet_should_be_100(){
+        Assertions.assertEquals(100,wallet.getBalance());
+    }
+    @Then("the balance of my wallet should be 0")
+    public void the_balance_of_my_wallet_should_be_0(){
+        Assertions.assertEquals(0,wallet.getBalance());
+    }
+    @Then("the balance of my wallet should be 50")
+    public void the_balance_of_my_wallet_should_be_50(){
+        Assertions.assertEquals(50,wallet.getBalance());
+    }
+    @Then("the balance of my wallet should be 1")
+    public void the_balance_of_my_wallet_should_be_1_(){
+        Assertions.assertEquals(1,wallet.getBalance());
     }
 }
