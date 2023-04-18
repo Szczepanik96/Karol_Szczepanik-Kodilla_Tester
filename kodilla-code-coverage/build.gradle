@@ -4,7 +4,6 @@ plugins {
     id 'checkstyle'
     id "com.github.spotbugs" version "4.7.2"
 }
-
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -19,6 +18,7 @@ checkstyle {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.32'
 }
 
 test {
@@ -42,7 +42,6 @@ jacocoTestCoverageVerification {
 spotbugs {
     ignoreFailures = true
 }
-
 spotbugsMain {
     reports {
         html {
@@ -50,7 +49,6 @@ spotbugsMain {
         }
     }
 }
-
 spotbugsTest {
     reports {
         html {
@@ -58,3 +56,4 @@ spotbugsTest {
         }
     }
 }
+
