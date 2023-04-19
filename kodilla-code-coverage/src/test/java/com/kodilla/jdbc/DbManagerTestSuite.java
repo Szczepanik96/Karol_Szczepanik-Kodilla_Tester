@@ -1,6 +1,5 @@
 package com.kodilla.jdbc;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DbManagerTestSuite {
     private static DbManager dbManager;
@@ -35,14 +38,44 @@ public class DbManagerTestSuite {
         //Then
         int counter = getResultsCount(rs);
         int expected = count + 5;
-        Assertions.assertEquals(expected, counter);
+        assertEquals(expected, counter);
 
         rs.close();
         statement.close();
     }
     @Test
     void testSelectUsersAndPosts() throws SQLException{
+        //given
+        String countQuery = "SELECT U.FIRSTNAME, U.LASTNAME\n" +
+                "FROM USERS U\n" +
+                "JOIN POSTS P ON U.ID = P.USER_ID\n" +
+                "GROUP BY U.ID, U.FIRSTNAME, U.LASTNAME\n" +
+                "HAVING COUNT(P.ID) >= 2;";
+        Statement statement = createStatement();
+        ResultSet rs = statement.executeQuery(countQuery);
+        int counter = 0;
+        while(rs.next()) {
+            System.out.println(rs.getString("FIRSTNAME") + " " +
+                    rs.getString("LASTNAME"));
+            counter++;
+        }
+        ResultSet actualResultSet = statement.executeQuery(countQuery);
+        List<String> expectedUserList = Arrays.asList("Krzysztof Stanowski", "Mateusz Borek");
 
+        int actualCount = 0;
+        List<String> actualUserList = new ArrayList<>();
+        while (actualResultSet.next()) {
+            String fullName = actualResultSet.getString("FIRSTNAME") + " " +
+                    actualResultSet.getString("LASTNAME");
+            actualUserList.add(fullName);
+            actualCount++;
+        }
+        //then
+        assertEquals(expectedUserList, actualUserList);
+        assertEquals(expectedUserList.size(), actualCount);
+
+        rs.close();
+        statement.close();
     }
 
     private Statement createStatement() throws SQLException {
@@ -87,5 +120,4 @@ public class DbManagerTestSuite {
         }
         return count;
     }
-
 }
