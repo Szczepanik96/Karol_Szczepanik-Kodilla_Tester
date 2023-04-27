@@ -14,8 +14,7 @@ public class DbManager {
         connectionProps.put("user", "kodilla_karol_sz");
         connectionProps.put("password", "rolka96");
         conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/kodilla_karol_sz?serverTimezone=Europe/Warsaw"
-                        + "&useSSL=False&PublicKeyRetrieval=true",
+                "jdbc:mysql://localhost:3306/kodilla_karol_sz?serverTimezone=Europe/Warsaw&useSSL=False&allowPublicKeyRetrieval=True",
                 connectionProps);
     }
 
